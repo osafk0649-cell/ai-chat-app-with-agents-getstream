@@ -17,6 +17,7 @@ export enum AgentPlatform {
 // Extended message type for writing assistant features.
 
 export interface WritingMessage {
+  
   custom?: {
     messageType?: "user_input" | "ai_response" | "system_message";
     writingTask?: string;
