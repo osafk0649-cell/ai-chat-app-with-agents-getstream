@@ -145,6 +145,8 @@ export class OpenAIResponseHandler {
         }
 
         // Final answer
+
+        
         this.history.push({ role: "assistant", content });
         await this.chatClient.partialUpdateMessage(message_id, {
           set: { text: content },
