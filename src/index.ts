@@ -9,14 +9,13 @@ const app = express();
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 
-// Map to store the AI Agent instances
-// [user_id string]: AI Agent
+
 const aiAgentCache = new Map<string, AIAgent>();
 const pendingAiAgents = new Set<string>();
 
-// TODO: temporary set to 8 hours, should be cleaned up at some point
+
 const inactivityThreshold = 480 * 60 * 1000;
-// Periodically check for inactive AI agents and dispose of them
+
 setInterval(async () => {
   const now = Date.now();
   for (const [userId, aiAgent] of aiAgentCache) {
